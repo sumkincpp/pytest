@@ -16,7 +16,10 @@ def truncate_if_required(explanation, item, max_length=None):
     Truncate this assertion explanation if the given test item is eligible.
     """
     if _should_truncate_item(item):
-        return _truncate_explanation(explanation)
+        max_lines = int(item.config.getini('assertion_max_lines'))
+        max_chars = int(item.config.getini('assertion_max_chars'))
+
+        return _truncate_explanation(explanation, max_lines, max_chars)
     return explanation
 
 

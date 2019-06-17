@@ -24,6 +24,18 @@ def pytest_addoption(parser):
                             expression information.""",
     )
 
+    parser.addini(
+        "assertion_max_lines",
+        "number of lines to truncate in non-verbose mode",
+        default=8,
+    )
+
+    parser.addini(
+        "assertion_max_chars",
+        "number of chars to truncate in non-verbose mode",
+        default=8 * 80,
+    )
+
 
 def register_assert_rewrite(*names):
     """Register one or more module names to be rewritten on import.
